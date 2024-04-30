@@ -1,0 +1,120 @@
+- dpkg instalava os pacotes antigamente
+- apt: oque faz:
+	- Sana as dependencias
+	- Faz o download das deps
+	- Aplica o dpkg em cada dep
+- dpkg pega o data.tar.gz e descomprime no / do SO jogando cada coisa em seu lugar
+- Pacote é a junção do código e do binário
+- O pacote no inicio é apenas o codigo fonte e as configuracoes necessarias para gerar um .deb, inclusive o .deb gerado na  maquina local
+- Este pacote vai para o primeiro bot e de a vania joga isso para todas as arquiteturas
+- No primeiro pacote, fica em uma fila (debian new queue) de 1 dia a 3 meses esperando
+- Na primeira vez eu abro no ITP (intent to package) para ver se ja nao tem outra pessoa tentando empacotar
+- FTP master analiza a estrutura e licencimento
+- Se a FTP master aprovar, vai para Incoming (release) -> aqui é visitado em 6 horas para ir para o unstable
+- debostrap sid /tmp/jaula http://deb.debian.or/debian
+- https://debian.org/devel
+- https://debianet.com.br
+- Debian Free Software Guidelines
+- reportbug: Reportar bug para debian
+- Empacotamento
+	- Baixou o tar.gz do upstream
+	    - Nome do pacote - versão
+	- Analizou a licença, o man do arquivo
+	- Debianização (Cria um arquibo debian) usando o dhmake
+		- Single -> Gera Apenas um binario
+		- Indep -> Para Pyhton, Java, que nao gera binario
+		- Library -> Biblioteca
+		- Python -> Para Python
+	- Dentro da pasta debian
+	- Criou uma pasta de lixo e moveu coisas desnecessarias
+		- README.Debian (Instruções para os usuários que fica em /usr/share/pkg/README)
+      		- README.Source (Instruções sobre os codigos)
+      		- cron: faz agendamentos e tarefas
+		- doc
+		- docbase
+		- manpage: Se nao tiver manpage, tem q escrever com o txttoman
+        	- txttoman file -> sai a manpage
+      		- preinst postinst, prerm postrm: Utilizado para usar comandos antes/depois da instalacao ou remocao, ex: apache2.0
+    	- Arquivos que todos os pacotes tem q ter
+      		- changelog
+			- Documentação do pacote
+			- nao do upstream coloca o unstable como release
+			- Remover tags e comentarios para nao pesar para o usuario final
+			- Anotar todas as alteracoes do empacotamento
+      		- copyright
+			- Buscar os autores no copyrigth e editar no arquivo
+			- Verificar se ele falou gpl 3+, senao apenas vale a 3.0 e nao as que sair
+			- Colocar o texto da licenca resumida
+			- Eriberto tem video sobre copyrigth
+			
+      		- control
+			- Escrever seção
+			- La tem o Maintainer
+			- Rules Root: Se precisa ser root
+			- Build depends
+				- Dependencias de construção (libs)
+			- MultiArchs:Maioria das vezes é foreing
+			- Depends: dependencias
+			- Descriptions small and long, Pegamos no site do upstrem
+				- Inicia sempre com espaco, usa-se enteres para quebrar linhas e . para espaco
+			- Nas arquiteturas das dependencias podemos especificar as archs como
+				- valgrind [amd64 arch64] ou valgrind [!amd64 !arch64] (só funciona para algumas arquiteturas)
+				- bison (funciona para todos)
+      		- source
+			- geralmente tem apenas o arquivo format dentro
+			- pode ser quilt o native
+      		- rules
+			- Mantem a linha do head (makefile, exports)
+			- o dh no fim do arquivo verifica oque é e constrói da maneira certa (C, Java, ...)
+			- Faz o build acontecer
+			
+    	- Vamos usar também
+		- salsa-ci.myl
+			- Deve-se remover o ex
+			- O Salsa é um gitlab dentro do debian
+			- Devemos apenas configurar o CI no salsa e arrumar as configurações
+			- https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/pipeline-jobs.yml
+		- watch
+			- Quando sai novas versoes somos avisados
+			- Se faz um commit novo avisa e etc...
+			- funciona com expressão regular (peu)
+			    - no peu, o ponto signfica qualquer coisa que nao seja espaço
+			- coloca o link das tags do upstream com o (.*)
+			    - busca hrefs com qualquer coisa devido a expressão peu
+			    - fez um uscan-check nos links e achou oque queria que era os archives
+				- uscan faz download
+				- uscan-check ja mostra as versoes novas
+			    - voltou no watch e fez um grep doque queria
+				- http://upstream/tags archive/refs/tags/v?(.*)\.tar\.gz
+				- http://upstream/tags .*/tags/v?(\d\S+)\.tar\.(?:gz|bz2|xz)
+				- http://upstream/tags .*/tags/v?(\d\S+)\.tar\@ARCHIVE_EXT 
+		- upstream
+			- dentro tem um metadata.ex, deve-se remover o ex
+			- pode colocar doacao pro upstream, issn, url, paper, screenshots
+			- usado para ferramentas de rastreamento
+			- dentro do metadata tem dados do upstrem como documentacaom repositorio, bugdatabase, etc..
+	- Gera o pacote com dbuild
+	- debclean volta oque era antes
+	- CI
+		- Instalar pacote
+		- apt install ./package.deb ou debi no package folder
+		- Para ver se a saída é branco: echo $?
+		- cria uma pasta chamada tests dentro do debian
+		- Crian um arquivo chamado controll
+		        - Test-Command: package name
+		- autopkgtest . --null para testar o CI do pacote
+	- Resolver problemas do lint
+		- lintian ve os problemas com cores
+			- opção -i mostra tudo sobre os erros
+	- Para colocar nova versao faz-se uupdate ../0.2.tar.gz
+- Eriberto é um mentor do debian, ele tem um processo todo para isso
+	- Ele mentora diversas pessoas, desde que tem comecando com quem quer ser maintainer
+- mcedit, em baixo fica os atalhos como f4, f5, etc...
+	- f8, deleta
+	- f10 sai ou esc esc
+- apt souce
+	- Vê como um pacote foi feito
+- Tracker acha os pacotes
+	- DDO é onde se ve os pacotes mantidos por alguem e lá pode-se ver o watch que mostra se tem novas versões
+- Para mandar por e-mail
+	- Manda-se o orig, o debian e o dsc
