@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plain-dictionary>
+  <format>dict</format>
+  <name>English-Russian (Mueller)</name>
+  <version>7</version>
+  <authors>
+    <author name="S. Starostin"/>
+    <author name="E. S. Cymbalyuk" email="mueller_dic@koi.chat.ru"/>
+  </authors>
+  <path>mueller7.dict.dz</path>
+  <encoding>UTF-8</encoding>
+  <licence>
+  </licence>
+  <description>V.K.Mueller English-Russian Dictionary, 7 Edition; "State Publishing House of Foreign and National Dictionaries" Moscow 1961; Free Electronic Version by S.Starostin 196; Electronic Version by E.S.Cymbalyuk 1999 under GNU GPL, ver. 1.2</description>
+</plain-dictionary>

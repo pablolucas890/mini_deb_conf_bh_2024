@@ -1,0 +1,15 @@
+Package: mueller7-dict
+Source: mueller
+Version: 2002.02.27-14
+Architecture: all
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Installed-Size: 3687
+Suggests: dict-server | opendict, dict-client
+Provides: dictd-dictionary
+Section: text
+Priority: optional
+Description: Mueller English/Russian dictionary in dict format
+ Electronic version of the English/Russian dictionary by V. K. Mueller,
+ release 7.
+ .
+ This package contains the dictionary in dict format.

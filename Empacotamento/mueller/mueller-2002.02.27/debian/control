@@ -1,0 +1,30 @@
+Source: mueller
+Section: text
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends-Indep: dictfmt, dictzip, python3
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+
+Package: mueller7accent-dict
+Depends: ${misc:Depends}
+Suggests: dict-server | opendict, dict-client
+Provides: dictd-dictionary
+Architecture: all
+Description: Mueller English/Russian dictionary with accents in dict format
+ Electronic version of the English/Russian dictionary with accents by
+ V. K. Mueller, release 7.
+ .
+ This package contains accented version of the dictionary in dict format.
+
+Package: mueller7-dict
+Depends: ${misc:Depends}
+Suggests: dict-server | opendict, dict-client
+Provides: dictd-dictionary
+Architecture: all
+Description: Mueller English/Russian dictionary in dict format
+ Electronic version of the English/Russian dictionary by V. K. Mueller,
+ release 7.
+ .
+ This package contains the dictionary in dict format.

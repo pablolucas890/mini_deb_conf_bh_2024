@@ -1,0 +1,15 @@
+Package: mueller7accent-dict
+Source: mueller
+Version: 2002.02.27-14
+Architecture: all
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Installed-Size: 3800
+Suggests: dict-server | opendict, dict-client
+Provides: dictd-dictionary
+Section: text
+Priority: optional
+Description: Mueller English/Russian dictionary with accents in dict format
+ Electronic version of the English/Russian dictionary with accents by
+ V. K. Mueller, release 7.
+ .
+ This package contains accented version of the dictionary in dict format.

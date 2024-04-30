@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_clean:
+	dh_clean
+	make -f debian/Makefile clean
+
+override_dh_auto_build:
+	make -f debian/Makefile
+
+override_dh_auto_install:
+	make -f debian/Makefile install PREFIX=/usr DESTDIR=debian/tmp
+	dh_auto_install

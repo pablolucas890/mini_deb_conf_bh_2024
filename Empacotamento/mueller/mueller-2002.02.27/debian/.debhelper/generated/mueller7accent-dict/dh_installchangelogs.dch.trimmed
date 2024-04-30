@@ -1,0 +1,41 @@
+mueller (2002.02.27-14) unstable; urgency=medium
+
+  * QA upload.
+  * Set Debian QA Group as maintainer.
+  * Using new DH level format. Consequently:
+      - debian/compat: removed.
+      - debian/control: changed from 'debhelper' to 'debhelper-compat' in
+        Build-Depends field and bumped level to 13.
+  * debian/control:
+      - Added Rules-Requires-Root field to source stanza.
+      - Bumped Standards-Version to 4.6.2.
+
+ -- pablolucas890 <pablolucas890@gmail.com>  Tue, 30 Apr 2024 15:02:33 -0300
+
+mueller (2002.02.27-13) unstable; urgency=low
+
+  * Bump release for an source-only upload (again).
+
+ -- Mikhail Gusarov <dottedmag@debian.org>  Fri, 20 Dec 2019 08:49:50 +0100
+
+mueller (2002.02.27-12) unstable; urgency=low
+
+  * Bump release for source-only upload
+  * Suppress an error from dictdconfig in postinst/prerm.
+  * Fix an accidentally created 0755 directory.
+
+ -- Mikhail Gusarov <dottedmag@debian.org>  Tue, 17 Dec 2019 18:59:35 +0100
+
+mueller (2002.02.27-11) unstable; urgency=low
+
+  * debian/{scripts/to-dict.py,debian/Makefile,control}:
+    Convert debian/scripts/to-dict.py to Python 3
+  * debian/control:
+    Bump Standards-Version to 4.4.1, no changes required.
+  * debian/*.{postinst,postrm}:
+    Address Lintian warning about explicit paths to binaries.
+
+ -- Mikhail Gusarov <dottedmag@debian.org>  Sun, 03 Nov 2019 01:37:55 +0200
+
+# Older entries have been removed from this changelog.
+# To read the complete changelog use `apt changelog mueller7accent-dict`.

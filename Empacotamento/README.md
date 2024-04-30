@@ -118,3 +118,27 @@
 	- DDO é onde se ve os pacotes mantidos por alguem e lá pode-se ver o watch que mostra se tem novas versões
 - Para mandar por e-mail
 	- Manda-se o orig, o debian e o dsc
+- mueller
+	- analizou os bugs do ubuntu
+- ITA
+	- Intent to adaption
+- bts
+	- Manda email requisitando mudanca de maintainer
+- Gerar novo changelog
+	- dch --qa
+- compat nao existe mais, ele especificava a versao
+- Build com debuild
+	- Em alguns casos o pacote necessita instalar as dependencias de build
+		- Instala as deps (build-dep mueller)
+	- Coloca o maintainer como debian QA Group
+- Muito importante achar os sites antigos, pode-se usar o archive para isso ou baixar os pacotes antigos
+- Source Stanza
+	- Grupo do paragrafo do source no controll
+- No changelog se tiver mais de uma alteracao colocar com separacao de traço (-) e em ordem alfabética
+- no-dep5-copyright
+	- Estudar video de copryrigth
+- forensics-extra
+	- Ve pacotes orfaos
+	- Vai no Debian QAGroup
+	- abre o changelog e roda o group
+- Quintas feiras tem as reunioes do debian brasilia
